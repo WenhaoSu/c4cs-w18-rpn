@@ -8,15 +8,20 @@ operators = {
     '-': operator.sub,
     '*': operator.mul,
     '/': operator.truediv,
+    '^': operator.pow
 }
 
 def calculate(myarg):
+    if myarg in ['q', 'quit', 'exit']:
+        exit()
     stack = list()
     for token in myarg.split():
         try:
             token = int(token)
             stack.append(token)
         except ValueError:
+            if not token in operators.keys():
+                return "Invalid operator"
             function = operators[token]
             arg2 = stack.pop()
             arg1 = stack.pop()
