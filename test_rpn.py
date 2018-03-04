@@ -15,3 +15,9 @@ class TestBasics(unittest.TestCase):
     def test_divide(self):
         result = rpn.calculate("6 3 /")
         self.assertEqual(2, result)
+    def test_pow(self):
+        result = rpn.calculate("3 3 ^")
+        self.assertEqual(27, result)
+    def test_error_parameter(self):
+        result = rpn.calculate("3 3 / 1")
+        self.assertEqual("Too many parameters", result)
